@@ -1,0 +1,93 @@
+
+html {
+    height: 100%;
+}
+
+body {
+  max-width: 600px;
+  background-color: dodgerblue; 
+  font-family : georgia, arial, helvetica;
+  background-image:url("bg_img.jpeg");
+}
+
+.header-body {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid white;
+  padding: 10px;
+}
+
+.header-element-title {
+ text-align: center;
+ margin-left: 10px
+}
+
+.about-me {
+  font-size: 18px;
+  opacity: 50%
+}
+
+.profil-picture {
+    height: 100px;
+  width: 100px;
+  border-radius: 100%;
+  border: 2px solid white;
+}
+
+img {
+  filter: drop-shadow(5px 10px 4px #4444dd);
+}
+
+.title {
+font-weight: bold;
+}
+
+h1 {
+color: #F0FFFF
+}
+
+.main-body {
+  margin-top:10px;
+  border: 2px solid white;
+  padding: 10px;
+}
+
+.footer-main {
+  text-align: center;
+  margin-top:10px;
+  border: 2px solid white;
+  padding: 5px;
+}
+
+.twitter {
+  color : #1d9bf0
+}
+
+.linkedin {
+  color : #0a66c2
+}
+
+.github {
+  color : #24292f
+}
+
+a {
+  text-decoration:none
+}
+
+ul {
+  list-style-type: none
+}
+
+h2 {
+  font-style: italic;
+}
+
+.main-body > .first-list > li {
+  color : #20B8B8
+}
+
+
+.main-body > .second-list > li {
+  color : #689bca
+}
