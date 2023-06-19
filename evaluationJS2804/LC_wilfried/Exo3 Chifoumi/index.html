@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chifoumi</title>
+    <link rel="stylesheet" href="../Exo3 Chifoumi/style.css" />
+    <script src="../Exo3 Chifoumi/index.js" async></script>
+    <title>Chifoumi</title>
+  </head>
+  <body>
+    <h1>Chifoumi</h1>
+    <button id="playButton">Jouer</button>
+
+    <div id="gameModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Choisissez entre pierre, feuille et ciseau :</p>
+        <div id="choices">
+          <button class="choice" data-choice="pierre">Pierre</button>
+          <button class="choice" data-choice="feuille">Feuille</button>
+          <button class="choice" data-choice="ciseau">Ciseau</button>
+          <button class="choice" data-choice="puit">Puit</button>
+        </div>
+        <p id="result"></p>
+      </div>
+    </div>
+  </body>
+</html>
