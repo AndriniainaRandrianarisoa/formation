@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <ul id="myList">
+    <li>Élément 1</li>
+    <li>Élément 2</li>
+    <li>Élément 3</li>
+  </ul>
+
+  <button onclick="addItem()">Ajouter un élément</button>
+  <button onclick="removeItem()">Supprimer un élément</button>
+
+  <script>
+    function addItem() {
+      var li = document.createElement("li");
+      var text = document.createTextNode("Nouvel élément");
+      li.appendChild(text);
+      document.getElementById("myList").appendChild(li);
+    }
+
+    function removeItem() {
+      var list = document.getElementById("myList");
+      list.removeChild(list.lastChild);
+    }
+  </script>
+
+</body>
+
+</html>
