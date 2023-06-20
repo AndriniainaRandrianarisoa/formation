@@ -35,7 +35,7 @@ body {
 }
 
 img {
-  filter: drop-shadow(5px 10px 4px #4444dd);
+  filter: drop-shadow(5px 10px 4px white);
 }
 
 .title {
