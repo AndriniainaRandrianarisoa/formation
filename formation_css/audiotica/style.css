@@ -1,5 +1,19 @@
+body {
+  width : 100%
+}
+
 .content {
   display : flex;
   flex-direction: row;
-  justify-content: space-between
 }
+
+
+
+
+
+
+.content-sidebar-main {
+  background-color:#272727;
+  min-height: 750px;
+}
+/* #272727 */
