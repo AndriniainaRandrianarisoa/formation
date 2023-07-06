@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Exercice JavaScript DOM</title>
+  <title>Mon formulaire de connection</title>
 </head>
 
 <body>
@@ -16,29 +16,8 @@
     <br>
     <input type="submit" value="Se connecter">
   </form>
+  <script src="script.js"></script>
 
-  <script>
-    // Sélectionner le formulaire par son id
-    var form = document.getElementById('loginForm');
-
-    // Ajouter un écouteur d'événement pour la soumission du formulaire
-    form.addEventListener('submit', function (event) {
-      // Empêcher le comportement par défaut du formulaire
-      event.preventDefault();
-
-      // Récupérer les valeurs des champs d'entrée
-      var username = document.getElementById('username').value;
-      var password = document.getElementById('password').value;
-
-      // Vérifier si les champs sont vides
-      if (username === '' || password === '') {
-        alert('Veuillez remplir tous les champs.');
-      } else {
-        // Envoyer le formulaire
-        form.submit();
-      }
-    });
-  </script>
 </body>
 
 </html>
