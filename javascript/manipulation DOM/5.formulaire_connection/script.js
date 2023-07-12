@@ -15,7 +15,7 @@ let myInformation = {
 // let id = "user"
 // let pass = 'pass'
 
-// j'ai mis un ecouteru d'ebenement sur mon formaulaire 
+// j'ai mis un ecouteru d'ebenement sur mon formulaire 
 myForm.addEventListener('submit', function(event) {
   event.preventDefault()
   // je test si j'arrive bien a entrer dans ma fonction et que mon evenenement fonctionne
