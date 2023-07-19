@@ -1,0 +1,19 @@
+article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img {
+  width: 40%;
+}
+
+button {
+  margin: 10px;
+  width: 50px;
+  font-family: 'Courier New', Arial, sans-serif;
+}
+
+p {
+  font-family: 'Courier New', Arial, sans-serif;
+}

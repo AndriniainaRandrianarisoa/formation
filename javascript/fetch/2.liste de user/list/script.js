@@ -21,7 +21,6 @@ function getWeather() {
         weatherDataElement.appendChild(userDiv);
       }
     })
-
     .catch((error) => {
       console.log("Une erreur s'est produite :", error);
     });
