@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Jeu de combat</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Jeu de combat</h1>
+        <div class="player" id="player1">
+            <h2>Joueur 1</h2>
+            <p>Points de vie: <span id="health1">100</span></p>
+            <button id="attack1" onclick="attack(1)">Attaquer</button>
+        </div>
+        <div class="player" id="player2">
+            <h2>Joueur 2</h2>
+            <p>Points de vie: <span id="health2">100</span></p>
+            <button id="attack2" onclick="attack(2)">Attaquer</button>
+        </div>
+        <button id="start" onclick="startGame()">Commencer la partie</button>
+        <p id="result" style="display: none;"></p>
+        <div id="announcements"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

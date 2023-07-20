@@ -8,12 +8,11 @@ function getAllTasks() {
       console.log("🚀 ~ file: script.js:9 ~ .then ~ data:", data);
 
       for (const element of data.todos) {
-        var taskList = document.getElementById("taskList");
-        var li = document.createElement("li");
-        li.innerHTML = `<span>${element.todo}</span><button class="delete" onclick="deleteTask(this)">Supprimer</button> <button style='background-color: blue'>Detail</button>`;
+        let taskList = document.getElementById("taskList");
+        let li = document.createElement("li");
+        li.innerHTML = `<span>${element.todo}</span><button class="delete" onclick="deleteTask(${element.id})">Supprimer</button> <button style='background-color: blue'>Detail</button>`;
         taskList.appendChild(li);
       }
-
     })
     .catch((error) => {
       console.log("Une erreur s'est produite :", error);
@@ -56,3 +55,17 @@ function deleteTask(button) {
 }
 
 getAllTasks();
+
+// const deleteTask = async(test, id) => {
+//   const urlForAddTask = `https://dummyjson.com/todos/${id}`
+//   const response = await fetch(urlForAddTask);
+//   var li = test.parentElement;
+//   li.remove();
+// }
+
+const getRandom = async () => {
+  const urlForgetRandom = `https://dummyjson.com/todos`;
+  const response = await fetch(urlForAddTask);
+};
+
+getRandom();

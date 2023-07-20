@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Dragon Slayer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet">
+    <link rel="stylesheet" href="dragon-slayer.css">
+
+    <!-- Fonctions utilitaires -->
+    <script src="script2.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <h1>Dragon slayer</h1>
+        <p>Le dernier combat des Fantastiques Dev</p>
+    </header>
+    <main>
+        <div class="game">
+            <h2>Que la fête commence !!</h2>
+            <button id="start" onclick="startGame()">Commencer la partie</button>
+
+            <!-- Etat du jeu -->
+            <div class="game-state">
+                <div class="player" id="player1">
+                    <figure class="game-state_player">
+                        <img src="images/knight.png" alt="Chevalier">
+                        <figcaption><span id="health1">100</span>PV</figcaption>
+                    </figure>
+                    <button id="attack1" onclick="attack(1)">Attaquer</button>
+                </div>
+                <div class="player" id="player2">
+                    <figure class="game-state_player">
+                        <img src="images/dragon.png" alt="Dragon">
+                        <figcaption><span id="health2">100</span>PV</figcaption>
+
+                    </figure>
+                    <button id="attack2" onclick="attack(2)">Attaquer</button>
+                </div>
+            </div>
+
+            <!-- Journal de la partie - TOUR N°1 -->
+
+            <footer>
+
+                <p id="result" style="display: none;"></p>
+                <div id="announcements"></div>
+            </footer>
+        </div>
+    </main>
+    <img src="images/cloud1.png" alt="" id="cloud1" class="cloud">
+    <img src="images/cloud2.png" alt="" id="cloud2" class="cloud">
+</body>
+
+</html>
