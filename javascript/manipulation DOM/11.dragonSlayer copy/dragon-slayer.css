@@ -200,3 +200,13 @@ progress::-webkit-progress-value {
 progress::-moz-progress-bar {
 	background-color: #ec4037;
 }
+
+.startBtn {
+  font-family: 'Germania One', cursive;
+  font-size: 2.5vw;
+}
+
+.attackBtn {
+  font-family: 'Germania One', cursive;
+  font-size: 2.5vw;
+}
