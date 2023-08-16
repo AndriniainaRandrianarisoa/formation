@@ -1,0 +1,22 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+nav {
+    display:flex;
+    justify-content: center;
+    gap:15px;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+.activeLink {
+  color: red;
+}
+
+.activeTest {
+  font-size: 30px;
+}

@@ -24,7 +24,17 @@ app.get('/products/:id', async(req, res) => {
     const product = await Product.findById(id); 
     res.status(200).json(product) 
   } catch (error) {
-    res.status(500).json({message: error.message})
+    res.status(404).json({message: error.message})
+  }
+});
+
+app.get('/api/stuff/:id', async(req, res, next) => {
+  try {
+    const {id} = req.params
+    const thing = await Thing.findOne(id)
+    res.status(200).json(thing)
+  } catch (error) {;
+    res.status(404).json({ message : error.message })
   }
 });
 
@@ -88,3 +98,5 @@ mongoose
     console.log(error);
   });
  
+
+
