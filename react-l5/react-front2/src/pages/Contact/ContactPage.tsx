@@ -25,7 +25,7 @@ export default function ContactPage(props: any) {
       } catch (error) {
         console.log(error);
       }
-    };
+    };   
     loadTodos();
   });
 

@@ -29,7 +29,7 @@ function App() {
 
     async function loadTodo() {
       const listTodos = await getTodos();
-      //setTodos(listTodos)
+      setTodos(listTodos)
       //console.log(listTodos);
     }
    
