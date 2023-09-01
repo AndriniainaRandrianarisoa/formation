@@ -6,7 +6,7 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
+  TableRow,
 } from "../../components/ui/table";
 
 import {
@@ -14,24 +14,23 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle
+  CardTitle,
 } from "../../components/ui/card";
 
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "../../components/ui/dropdown-menu";
 
-import { Button } from "@/components/ui/button";
 import {
   Pencil,
   Trash2,
   MoreHorizontal,
   CreditCard,
   Banknote,
-  Wallet
+  Wallet,
 } from "lucide-react";
 import { Progress } from "../../components/ui/progress";
 
@@ -43,7 +42,7 @@ import { getInvoices } from "../../services/api/invoice";
 // Enum
 import {
   InvoiceStatusEnum,
-  InvoiceMethodEnum
+  InvoiceMethodEnum,
 } from "../../services/enums/general-enums";
 
 const InvoiceList = () => {
@@ -57,7 +56,7 @@ const InvoiceList = () => {
       const formatted_datas = response?.datas.map((el: any) => {
         return {
           ...el,
-          statusFormatted: displayStatus(el.status)
+          statusFormatted: displayStatus(el.status),
         };
       });
 
@@ -92,7 +91,7 @@ const InvoiceList = () => {
             <TableRow>
               <TableHead className="w-[100px]">Invoice</TableHead>
               <TableHead className="text-center">Status</TableHead>
-              <TableHead >Method</TableHead>
+              <TableHead>Method</TableHead>
               <TableHead className="text-center">Amount</TableHead>
               <TableHead className="text-center">Percent</TableHead>
               <TableHead className="text-center">Actions</TableHead>
@@ -129,9 +128,7 @@ const InvoiceList = () => {
                 <TableCell className="text-center">
                   <DropdownMenu>
                     <DropdownMenuTrigger>
-                      <Button variant="ghost" className="h-8 w-8 p-0">
-                        <MoreHorizontal className="h-4 w-4" />
-                      </Button>
+                      <MoreHorizontal className="h-4 w-4" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       <DropdownMenuItem>

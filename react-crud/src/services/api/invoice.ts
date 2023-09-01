@@ -34,6 +34,24 @@ export async function getInvoiceById(id) {
 }
 
 
+export async function saveInvoice(data) {
+  try {
+    const response = await fakeInvoices.datas.find((el: any) => el.id == id);
+    // const response = await api.get("/groups/id");
+    return {
+      datas : response, 
+      status : true
+    }
+  } catch (error) {
+    return {
+      datas : [], 
+      status : false
+    }
+  }
+}
+
+
+
 
 
 
