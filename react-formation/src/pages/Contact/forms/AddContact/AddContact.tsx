@@ -1,28 +1,30 @@
 import { useState } from "react";
 
-export default function AddContactPage(props: any) {
-  const { handleAddMessage } = props;
+export default function AddContactPage(props) {
+  
+  const { coucou, hello } = props;
 
-  const [message, setMessage] = useState({
+  const [contact, setContact] = useState({
     name: "",
-    category: "",
-    message: "",
+    mail: "",
+    phone: "",
   });
 
   function handleSubmit(evt: any) {
     evt.preventDefault();
-    handleAddMessage(message);
+    coucou(contact);
   }
 
   function handleChange(evt: any) {
-    console.log(evt.target);
     const { name, value } = evt.target;
-    setMessage({ ...message, [name]: value });
+
+    setContact({ ...contact, [name]: value });
+    console.log("event", contact)
   }
 
   return (
     <>
-      <h2> Ajout d'un contact</h2>
+      <h2> {hello} </h2>
       <div>
         <form
           onSubmit={(evt) => handleSubmit(evt)}
@@ -40,29 +42,27 @@ export default function AddContactPage(props: any) {
           <br />
           <br />
 
-          <label htmlFor="category">Categorie:</label>
+          <label htmlFor="category">MAIL:</label>
 
-          <select
-            name="category"
-            id="category"
+          <input
+            className=""
+            type="text"
+            name="mail"
+            id="mail"
             onChange={(evt) => handleChange(evt)}
-          >
-            <option value="">Selectionne une categorie</option>
-            <option value="question">Questions</option>
-            <option value="suggestion">Suggestion</option>
-            <option value="ask">Demande</option>
-            <option value="other">Autres</option>
-          </select>
+          />
           <br />
           <br />
 
-          <label htmlFor="message">Votre message</label>
+          <label htmlFor="message">TEL</label>
           <br />
-          <textarea
-            name="message"
-            id="message"
+          <input
+            className=""
+            type="text"
+            name="phone"
+            id="phone"
             onChange={(evt) => handleChange(evt)}
-          ></textarea>
+          />
           <br />
 
           <input

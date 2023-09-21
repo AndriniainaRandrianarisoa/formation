@@ -1,7 +1,19 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import AddContactPage from "./forms/AddContact/AddContact";
 export const Contact = () => {
-  const elements = [
+const [test, setTest] = useState(false)
+
+  useEffect(() => {
+    // ca te permet de gerer le fonctione asynchrone
+    // 
+    console.log("coucou du useEffect")
+  },[])
+  // tableau de dependance est vide ca veux dire ton useEffect s'execute une seule fois
+  // quand un parametre existe il devient ecouteur du changement de la valeur de ce parans et s'execute au changement 
+
+
+
+  const [contacts, setContacts]: any = useState([
     {
       id: "INV001",
       name: "jhon doe",
@@ -19,8 +31,28 @@ export const Contact = () => {
       name: "jeanne Doe",
       mail: "jeanne@mail.com",
       phone: "525634553",
-    },
-  ];
+    }
+  ])
+
+//const title = "Ajout d'un contact"
+  const [formTitle, setFormTitle] = useState("Ajout d'un contact")
+
+  const [showAlert, setShowAlert] = useState(false)
+
+  const handleAddContact = (data) => {
+    console.log("coucoucoucocucoucocuo", data)
+    const formatted_data = {
+      id: "INV003",
+      name: data.name,
+      mail: data.mail,
+      phone: data.phone
+    }
+
+    const copy = [...contacts]
+    copy.push(formatted_data)
+    setContacts(copy)
+    setTest(true)
+  }
 
   return (
     <>
@@ -36,7 +68,7 @@ export const Contact = () => {
         </thead>
 
         <tbody>
-          {elements.map((element, index) => (
+          {contacts.map((element, index) => (
             <tr key={index}>
               <td>{element.id}</td>
               <td>{element.name}</td>
@@ -44,7 +76,7 @@ export const Contact = () => {
               <td>{element.phone}</td>
               <td>
                 <button>
-                  <a href={`/info/${element.id}`}> button</a>
+                  <a href={`/contact/${element.id}`}> button</a>
                 </button>
               </td>
             </tr>
@@ -52,8 +84,11 @@ export const Contact = () => {
         </tbody>
       </table>
       <div>
-        <AddContactPage />
+        <AddContactPage coucou = { handleAddContact } hello={formTitle}/>
       </div>
+           
+
+      
     </>
   );
 };
