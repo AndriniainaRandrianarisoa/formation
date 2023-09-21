@@ -30,16 +30,28 @@ const InfoContact = () => {
     }
   ];
 
-  const findData = () => {
-    const response = elements.find((el) => el.id == id);
-    console.log("🚀 ~ file: InfoContact.tsx:35 ~ findData ~ response:", response)
-    //setElement(response);
-  };
+  useEffect(() => {
+    const findContact = () => {
+      const response = elements.find((el) => el.id == id);
+      console.log(
+        "🚀 ~ file: InfoContact.tsx:35 ~ findData ~ response:",
+        response
+      );
+      //setElement(response);
+    };
+    findContact
+  }, []);
 
+  // tableau de dependance
+  // se met a jour a chaque ecghangement de state =. update
+
+  // useEffect( () => {
+
+  // })
 
   
 
-  findData();
+
 
   return (
     <>

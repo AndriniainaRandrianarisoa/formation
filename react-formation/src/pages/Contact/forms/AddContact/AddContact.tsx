@@ -1,23 +1,23 @@
 import { useState } from "react";
 
 export default function AddContactPage(props: any) {
-  const { handleAddMessage } = props;
+  const { handleAddcontact } = props;
 
-  const [message, setMessage] = useState({
+  const [contact, setcontact] = useState({
     name: "",
-    category: "",
-    message: "",
+    mail: "",
+    phone: "",
   });
 
   function handleSubmit(evt: any) {
     evt.preventDefault();
-    handleAddMessage(message);
+    handleAddcontact(contact);
   }
 
   function handleChange(evt: any) {
     console.log(evt.target);
     const { name, value } = evt.target;
-    setMessage({ ...message, [name]: value });
+    setcontact({ ...contact, [name]: value });
   }
 
   return (
@@ -40,34 +40,32 @@ export default function AddContactPage(props: any) {
           <br />
           <br />
 
-          <label htmlFor="category">Categorie:</label>
+          <label htmlFor="mail">Mail:</label>
 
-          <select
-            name="category"
-            id="category"
+          <input
+            className=""
+            type="text"
+            name="mail"
+            id="mail"
             onChange={(evt) => handleChange(evt)}
-          >
-            <option value="">Selectionne une categorie</option>
-            <option value="question">Questions</option>
-            <option value="suggestion">Suggestion</option>
-            <option value="ask">Demande</option>
-            <option value="other">Autres</option>
-          </select>
+          />
           <br />
           <br />
 
-          <label htmlFor="message">Votre message</label>
+          <label htmlFor="contact"> Telephone</label>
           <br />
-          <textarea
-            name="message"
-            id="message"
+          <input
+            className=""
+            type="phone"
+            name="phone"
+            id="phone"
             onChange={(evt) => handleChange(evt)}
-          ></textarea>
+          />
           <br />
 
           <input
             type="submit"
-            value="Envoyer votre message"
+            value="Envoyer votre contact"
             className="btn btn-secondary"
           />
         </form>
