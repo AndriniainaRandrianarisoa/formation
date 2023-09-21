@@ -1,27 +1,33 @@
 import React, { useEffect, useState } from "react";
 
 import {
+  Dialog,
+  DialogTrigger
+} from "@/components/ui/dialog";
+
+
+
+import {
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableRow
 } from "../../components/ui/table";
 
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "../../components/ui/card";
 
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "../../components/ui/dropdown-menu";
 
 import {
@@ -31,10 +37,15 @@ import {
   CreditCard,
   Banknote,
   Wallet,
+  Plus
 } from "lucide-react";
 import { Progress } from "../../components/ui/progress";
 
 import { Badge } from "../../components/ui/badge";
+
+import { Button } from "@/components/ui/button";
+
+import { Mail } from "lucide-react";
 
 // import api
 import { getInvoices } from "../../services/api/invoice";
@@ -42,12 +53,14 @@ import { getInvoices } from "../../services/api/invoice";
 // Enum
 import {
   InvoiceStatusEnum,
-  InvoiceMethodEnum,
+  InvoiceMethodEnum
 } from "../../services/enums/general-enums";
+import { AddInvoice } from "./modals/AddInvoice";
 
 const InvoiceList = () => {
   // useStats
   const [invoices, setInvoices]: any = useState([]);
+  const [addModal, setAddModal] = useState(false)
 
   // call api
   useEffect(() => {
@@ -56,7 +69,7 @@ const InvoiceList = () => {
       const formatted_datas = response?.datas.map((el: any) => {
         return {
           ...el,
-          statusFormatted: displayStatus(el.status),
+          statusFormatted: displayStatus(el.status)
         };
       });
 
@@ -77,13 +90,37 @@ const InvoiceList = () => {
     }
   };
 
+  const handleValidForm = (invoice) => {
+    setAddModal(false)
+    invoice.statusFormatted =  displayStatus(invoice.status)
+    const copy = [...invoices]
+    copy.push(invoice)
+    setInvoices(copy)
+  }
+
+  const handleClickAddButtoon = () => {
+    setAddModal(true)
+
+  }
+
   return (
-    <Card className="mt-10">
-      <CardHeader>
-        <CardTitle className="text-left">Liste de facture</CardTitle>
-        <CardDescription className="text-left">
-          Liste de facture
-        </CardDescription>
+    <Card>
+      <CardHeader className="hidden flex-col md:flex">
+        <div className="flex  items-center px-4">
+          <CardTitle className="text-left">Liste de facture</CardTitle>
+
+          <div className="ml-auto flex items-center space-x-4">
+            <Dialog open={addModal}>
+              <DialogTrigger asChild>
+                <Button onClick={handleClickAddButtoon}>
+                  <Plus className="mr-2 h-4 w-4" /> Create Invoice
+                </Button>
+              </DialogTrigger>
+              
+             <AddInvoice handleValidForm={ handleValidForm } handleCancelClick={() => setAddModal(false)}/>
+            </Dialog>
+          </div>
+        </div>
       </CardHeader>
       <CardContent>
         <Table>
@@ -92,6 +129,7 @@ const InvoiceList = () => {
               <TableHead className="w-[100px]">Invoice</TableHead>
               <TableHead className="text-center">Status</TableHead>
               <TableHead>Method</TableHead>
+              <TableHead className="text-center">Client</TableHead>
               <TableHead className="text-center">Amount</TableHead>
               <TableHead className="text-center">Percent</TableHead>
               <TableHead className="text-center">Actions</TableHead>
@@ -120,6 +158,9 @@ const InvoiceList = () => {
                       <Wallet />
                     </span>
                   )}
+                </TableCell>
+                <TableCell className="text-center">
+                  {item.clientName}
                 </TableCell>
                 <TableCell className="text-center">${item.amount}</TableCell>
                 <TableCell className="text-center">

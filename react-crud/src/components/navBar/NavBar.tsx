@@ -13,7 +13,7 @@ import {
   navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
 
-export function NavigationMenuDemo() {
+export function NavBar() {
   const components: { title: string; href: string; description: string }[] = [
     {
       title: "Alert Dialog",
@@ -139,4 +139,4 @@ export function NavigationMenuDemo() {
   );
 }
 
-export default NavigationMenuDemo;
+export default NavBar;

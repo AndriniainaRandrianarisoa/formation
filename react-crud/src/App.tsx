@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import NavBar from "@/components/navBar/NavBar";
 import InvoiceList from "./pages/invoiceList/InvoiceList";
+import NavHeader from "./components/navBar/NavHeader";
 //import InvoiceList from "./pages/invoiceListCopy/InvoiceList";
 
 function App() {
@@ -9,8 +9,10 @@ function App() {
 
   return (
     <>
-      <NavBar />
-      <InvoiceList />
+      <NavHeader />
+      <div className="p-8">
+        <InvoiceList />
+      </div>
     </>
   );
 }
