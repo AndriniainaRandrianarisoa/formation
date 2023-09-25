@@ -49,9 +49,13 @@ const InfoContact = () => {
 
   // })
 
+<<<<<<< HEAD
+  findData();
+=======
   
 
 
+>>>>>>> 459ef918a3cdbe3c6a69ecb8c39be5581e85fd3d
 
   return (
     <>
