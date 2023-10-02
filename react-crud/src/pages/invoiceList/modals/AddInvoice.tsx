@@ -68,8 +68,8 @@ export const AddInvoice = (props: any) => {
     defaultValues
   });
 
-  function onSubmit(data: InvoiceFormValues) {
-    //evt.preventDefault()
+  function onSubmit(e, data: InvoiceFormValues) {
+    e.preventDefault()
     const formatted_values = {
       ...data, 
       id: "INV008", 
@@ -131,7 +131,7 @@ export const AddInvoice = (props: any) => {
           <DialogDescription>Create your new invoice here</DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={(e) => form.handleSubmit(e, onSubmit)} className="space-y-8">
             <FormField
               control={form.control}
               name="method"

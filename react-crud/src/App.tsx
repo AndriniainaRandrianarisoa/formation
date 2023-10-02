@@ -1,8 +1,10 @@
 import { useState } from "react";
 import "./App.css";
 import InvoiceList from "./pages/invoiceList/InvoiceList";
+import User from "./pages/user/User";
 import NavHeader from "./components/navBar/NavHeader";
 //import InvoiceList from "./pages/invoiceListCopy/InvoiceList";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -10,9 +12,13 @@ function App() {
   return (
     <>
       <NavHeader />
-      <div className="p-8">
-        <InvoiceList />
-      </div>
+   
+      <Routes>
+        
+        
+        <Route path="/invoice" element={<InvoiceList />} />
+        <Route path="/user" element={<User />} />
+      </Routes>
     </>
   );
 }

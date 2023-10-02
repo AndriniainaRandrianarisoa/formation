@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import {
-  Dialog,
-  DialogTrigger
-} from "@/components/ui/dialog";
-
-
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 
 import {
   Table,
@@ -60,7 +55,7 @@ import { AddInvoice } from "./modals/AddInvoice";
 const InvoiceList = () => {
   // useStats
   const [invoices, setInvoices]: any = useState([]);
-  const [addModal, setAddModal] = useState(false)
+  const [addModal, setAddModal] = useState(false);
 
   // call api
   useEffect(() => {
@@ -91,104 +86,108 @@ const InvoiceList = () => {
   };
 
   const handleValidForm = (invoice) => {
-    setAddModal(false)
-    invoice.statusFormatted =  displayStatus(invoice.status)
-    const copy = [...invoices]
-    copy.push(invoice)
-    setInvoices(copy)
-  }
+    setAddModal(false);
+    invoice.statusFormatted = displayStatus(invoice.status);
+    const copy = [...invoices];
+    copy.push(invoice);
+    setInvoices(copy);
+  };
 
   const handleClickAddButtoon = () => {
-    setAddModal(true)
-
-  }
+    setAddModal(true);
+  };
 
   return (
-    <Card>
-      <CardHeader className="hidden flex-col md:flex">
-        <div className="flex  items-center px-4">
-          <CardTitle className="text-left">Liste de facture</CardTitle>
+    <div className="p-8">
+      <Card>
+        <CardHeader className="hidden flex-col md:flex">
+          <div className="flex  items-center px-4">
+            <CardTitle className="text-left">Liste de facture</CardTitle>
 
-          <div className="ml-auto flex items-center space-x-4">
-            <Dialog open={addModal}>
-              <DialogTrigger asChild>
-                <Button onClick={handleClickAddButtoon}>
-                  <Plus className="mr-2 h-4 w-4" /> Create Invoice
-                </Button>
-              </DialogTrigger>
-              
-             <AddInvoice handleValidForm={ handleValidForm } handleCancelClick={() => setAddModal(false)}/>
-            </Dialog>
+            <div className="ml-auto flex items-center space-x-4">
+              <Dialog open={addModal}>
+                <DialogTrigger asChild>
+                  <Button onClick={handleClickAddButtoon}>
+                    <Plus className="mr-2 h-4 w-4" /> Create Invoice
+                  </Button>
+                </DialogTrigger>
+
+                <AddInvoice
+                  handleValidForm={handleValidForm}
+                  handleCancelClick={() => setAddModal(false)}
+                />
+              </Dialog>
+            </div>
           </div>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[100px]">Invoice</TableHead>
-              <TableHead className="text-center">Status</TableHead>
-              <TableHead>Method</TableHead>
-              <TableHead className="text-center">Client</TableHead>
-              <TableHead className="text-center">Amount</TableHead>
-              <TableHead className="text-center">Percent</TableHead>
-              <TableHead className="text-center">Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {invoices.map((item, index) => (
-              <TableRow key={index}>
-                <TableCell className="font-medium">{item.id}</TableCell>
-                <TableCell className="text-center">
-                  <Badge variant="outline">{item.statusFormatted}</Badge>
-                </TableCell>
-                <TableCell className="text-center">
-                  {item.method == InvoiceMethodEnum.CARD && (
-                    <span>
-                      <CreditCard />
-                    </span>
-                  )}
-                  {item.method == InvoiceMethodEnum.PAYMENT && (
-                    <span>
-                      <Banknote />
-                    </span>
-                  )}
-                  {item.method == InvoiceMethodEnum.CHEQUE && (
-                    <span>
-                      <Wallet />
-                    </span>
-                  )}
-                </TableCell>
-                <TableCell className="text-center">
-                  {item.clientName}
-                </TableCell>
-                <TableCell className="text-center">${item.amount}</TableCell>
-                <TableCell className="text-center">
-                  <Progress value={item.percent} />
-                </TableCell>
-                <TableCell className="text-center">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger>
-                      <MoreHorizontal className="h-4 w-4" />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                      <DropdownMenuItem>
-                        <Pencil className="mr-2 h-4 w-4" />
-                        Modifier
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <Trash2 className="mr-2 h-4 w-4" />
-                        Supprimer
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </TableCell>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[100px]">Invoice</TableHead>
+                <TableHead className="text-center">Status</TableHead>
+                <TableHead>Method</TableHead>
+                <TableHead className="text-center">Client</TableHead>
+                <TableHead className="text-center">Amount</TableHead>
+                <TableHead className="text-center">Percent</TableHead>
+                <TableHead className="text-center">Actions</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </CardContent>
-    </Card>
+            </TableHeader>
+            <TableBody>
+              {invoices.map((item, index) => (
+                <TableRow key={index}>
+                  <TableCell className="font-medium">{item.id}</TableCell>
+                  <TableCell className="text-center">
+                    <Badge variant="outline">{item.statusFormatted}</Badge>
+                  </TableCell>
+                  <TableCell className="text-center">
+                    {item.method == InvoiceMethodEnum.CARD && (
+                      <span>
+                        <CreditCard />
+                      </span>
+                    )}
+                    {item.method == InvoiceMethodEnum.PAYMENT && (
+                      <span>
+                        <Banknote />
+                      </span>
+                    )}
+                    {item.method == InvoiceMethodEnum.CHEQUE && (
+                      <span>
+                        <Wallet />
+                      </span>
+                    )}
+                  </TableCell>
+                  <TableCell className="text-center">
+                    {item.clientName}
+                  </TableCell>
+                  <TableCell className="text-center">${item.amount}</TableCell>
+                  <TableCell className="text-center">
+                    <Progress value={item.percent} />
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger>
+                        <MoreHorizontal className="h-4 w-4" />
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent>
+                        <DropdownMenuItem>
+                          <Pencil className="mr-2 h-4 w-4" />
+                          Modifier
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Trash2 className="mr-2 h-4 w-4" />
+                          Supprimer
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
