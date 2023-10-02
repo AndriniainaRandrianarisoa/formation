@@ -86,11 +86,40 @@ export const AddInvoice = (props: any) => {
   }, []);
 
   
-  // function handleChange(evt: any) {
-  //   const { name, value } = evt.target;
-  //   setDefaultValues({ ...defaultValues, [name]: value });
-  //   console.log("🚀 ~ file: AddInvoice.tsx:91 ~ handleChange ~ defaultValues:", defaultValues)
+  function handleChange(evt: any) {
+    const { name, value } = evt.target;
+    setDefaultValues({ ...defaultValues, [name]: value });
+    console.log("🚀 ~ file: AddInvoice.tsx:91 ~ handleChange ~ defaultValues:", defaultValues)
+  }
+
+  const coucou = 0
+
+  const test  = () => {
+    console.log("coucou")
+  }
+
+  const test2 = () => {
+    console.log("vroum")
+  }
+
+  if (coucou == 0) {
+    test()
+  } else {
+    test2()
+  }
+
+  coucou == 0 ? test() : test2()
+
+
+  // const test = 0
+
+  // if(test == 0) {
+  //   console.log("coucou")
+  // } else {
+  //   console.log("caca")
   // }
+
+  // test == 0 ? console.log("coucou") : console.log("caca")
 
 
 
