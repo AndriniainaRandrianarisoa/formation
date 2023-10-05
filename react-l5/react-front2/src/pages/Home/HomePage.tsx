@@ -1,9 +1,6 @@
 import { Button, Card } from "react-bootstrap";
 
 export default function HomePage() {
-
-
-    
   return (
     <>
       <h2> Page d'accueil </h2>
