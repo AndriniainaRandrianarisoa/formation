@@ -6,8 +6,6 @@ export async function getAllPosts() {
   try {
     const response = await api.get(`posts`);
     return response;
-
-
   } catch (error) {
     return error;
   }
@@ -22,15 +20,28 @@ export async function getOnePostById(id: any) {
   }
 }
 
-
 export async function updateOnePost(id: any, body: any) {
   try {
     const response = await api.put(`posts/${id}`, body);
-    // simulation of success api response 
+    // simulation of success api response
     return {
-      datas: body, 
-      status : 200
-    }
+      datas: body,
+      status: 200
+    };
+  } catch (error) {
+    return error;
+  }
+}
+
+
+export async function createNewPost(body: any) {
+  try {
+    const response = await api.post(`posts`, body);
+   
+    return {
+      datas: body,
+      status: 200
+    };
   } catch (error) {
     return error;
   }

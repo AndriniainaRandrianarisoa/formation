@@ -9,7 +9,8 @@ import { UpdatePostForm } from "./Form/UpdatePostForm";
 import {
   getAllPosts,
   updateOnePost,
-  getOnePostById
+  getOnePostById,
+  createNewPost
 } from "../../services/api/posts";
 
 import { Link, Router } from "react-router-dom";
@@ -36,7 +37,6 @@ function Post() {
   useEffect(() => {
     const loadAllPosts = async () => {
       const response = await getAllPosts();
-
       if (response.status == 200) {
         const first10Items = formatArray(response.data);
         const postsWithUsers = affectUser(first10Items);
@@ -61,12 +61,13 @@ function Post() {
     return formattedResponse;
   };
 
-  const handleSendForm = (post: any) => {
-    post.user = users.datas.find((element) => element.id == post.userId);
-    const postsCopy = [...posts];
-    postsCopy.unshift(post);
-    const first10Items = formatArray(postsCopy);
-    setPosts(first10Items);
+  const handleSendForm = async(post: any) => {
+    const response = await createNewPost(post)
+    // post.user = users.datas.find((element) => element.id == post.userId);
+    // const postsCopy = [...posts];
+    // postsCopy.unshift(post);
+    // const first10Items = formatArray(postsCopy);
+    // setPosts(first10Items);
   };
 
   const formatArray = (posts) => {
