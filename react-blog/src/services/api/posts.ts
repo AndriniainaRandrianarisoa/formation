@@ -9,6 +9,7 @@ export async function getAllPosts() {
   } catch (error) {
     return error;
   }
+  
 }
 
 export async function getOnePostById(id: any) {

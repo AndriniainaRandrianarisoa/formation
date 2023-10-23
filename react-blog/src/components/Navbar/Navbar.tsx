@@ -13,6 +13,7 @@ const NavbarComponent = () => {
           <Nav className="me-auto">
             <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/post">Article</Nav.Link>
+            <Nav.Link href="/user">User</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
