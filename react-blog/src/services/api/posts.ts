@@ -5,9 +5,16 @@ const api = useApi();
 export async function getAllPosts() {
   try {
     const response = await api.get(`posts`);
-    return response;
+    return {
+      datas: response, 
+      status:  true
+    };
   } catch (error) {
-    return error;
+    return {
+      datas: [],
+      satus: false, 
+      error: error
+    };
   }
   
 }

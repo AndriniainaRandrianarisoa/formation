@@ -37,8 +37,8 @@ function Post() {
   useEffect(() => {
     const loadAllPosts = async () => {
       const response = await getAllPosts();
-      if (response.status == 200) {
-        const first10Items = formatArray(response.data);
+      if (response.status == true) {
+        const first10Items = formatArray(response.datas.data);
         const postsWithUsers = affectUser(first10Items);
 
         setPosts(postsWithUsers);
@@ -46,6 +46,7 @@ function Post() {
         //setStorePosts(postsWithUsers);
       } else {
         console.log("cacaca");
+        // gerer mon affichage de popup erreur 
       }
     };
     loadAllPosts();
