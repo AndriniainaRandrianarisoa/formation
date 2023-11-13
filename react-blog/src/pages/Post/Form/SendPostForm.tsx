@@ -65,7 +65,6 @@ export const SendPostForm = (props) => {
             <Button
               type="submit"
               variant="outline-dark"
-              type="submit"
               size="sm"
             >
               Creer un article

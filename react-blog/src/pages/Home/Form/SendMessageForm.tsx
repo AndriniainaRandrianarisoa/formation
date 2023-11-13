@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
+// import { Formik, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { useFormik } from "formik";
 
 export const SendMessageForm = (props) => {
   const { handleSendForm } = props;
@@ -11,16 +14,31 @@ export const SendMessageForm = (props) => {
     _id: "507f191e810c19729de860e123"
   });
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    handleSendForm(message);
-    setMessage({ subject: "", content: "", _id: "507f191e810c19729de860e123" });
-  };
+  const validationSchema = Yup.object({
+    subject: Yup.string().min(5).required("Subject is required and more than 5 letters"),
+    content: Yup.string().required("Last Name is required")
+  });
 
-  const handleChange = (evt: any) => {
-    const { name, value } = evt.target;
-    setMessage({ ...message, [name]: value });
-  };
+  const {values, handleBlur, handleChange,handleSubmit, errors } = useFormik({
+    initialValues: message,
+    validationSchema : validationSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    }
+  });
+
+
+
+  // const handleSubmit = (evt) => {
+  //   evt.preventDefault();
+  //   handleSendForm(message);
+  //   setMessage({ subject: "", content: "", _id: "507f191e810c19729de860e123" });
+  // };
+
+  // const handleChange = (evt: any) => {
+  //   const { name, value } = evt.target;
+  //   setMessage({ ...message, [name]: value });
+  // };
 
   return (
     <div>
@@ -34,9 +52,12 @@ export const SendMessageForm = (props) => {
                 type="text"
                 name="subject"
                 placeholder="j'aime vraiment pas"
-                onChange={(evt) => handleChange(evt)}
-                value={message.subject}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.subject}
+
               />
+              {errors.subject && <small>{errors.subject}</small>}
             </Form.Group>
             <Form.Group
               className="mb-3"
@@ -48,16 +69,13 @@ export const SendMessageForm = (props) => {
                 as="textarea"
                 rows={3}
                 placeholder="Utiliser react"
-                onChange={(evt) => handleChange(evt)}
-                value={message.content}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.content}
               />
+              {errors.content && <small>{errors.content}</small>}
             </Form.Group>
-            <Button
-              type="submit"
-              variant="outline-dark"
-              type="submit"
-              size="sm"
-            >
+            <Button type="submit" variant="outline-dark" size="sm">
               Envoyer
             </Button>
           </Form>
