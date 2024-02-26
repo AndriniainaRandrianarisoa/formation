@@ -1,8 +1,8 @@
 const usersFake = [
   {
     id: 1,
-    client: "Ange",
-    date: "randria",
+    firstname: "Ange2",
+    lastname: "randria",
     username: "coucou", 
     status : 10
   },
@@ -10,21 +10,21 @@ const usersFake = [
     id: 2,
     firstname: "Ange2",
     lastname: "randria",
-    username: "coucou",
+    username: "coucousdgsdg",
     status : 10
   },
   {
     id: 3,
     firstname: "Ange3",
     lastname: "randria",
-    username: "coucou",
+    username: "coucouvcn",
     status : 20
   },
   {
     id: 4,
     firstname: "Ange4",
     lastname: "randria",
-    username: "coucou",
+    username: "coucoubfbn",
     status : 10
   }
 ];

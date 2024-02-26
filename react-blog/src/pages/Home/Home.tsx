@@ -11,8 +11,10 @@ import CardImg from "react-bootstrap/CardImg";
 import { fakeMessages } from "./faker";
 
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { createNewMessage } from "../../services/api/messages";
 
 function DefaultExample() {
+  const test = "coucoucoucoucoucocuocu";
   const [messages, setMessages]: any = useState([]);
   const KEY = "posts";
   const [posts, setPosts]: any = useLocalStorage(KEY, []);
@@ -38,12 +40,19 @@ function DefaultExample() {
     return messages;
   };
 
-  const handleSendForm = (message: any) => {
+  const handleSendForm = async (message: any) => {
+    try {
+      const response = await createNewMessage(message);
+      const messagesCopy = [...messages];
+      messagesCopy.push({ ...response.datas, date: new Date() });
+      sortDate(messagesCopy);
+      setMessages(messagesCopy);
+    } catch (err) {
+      console.log("🚀 ~ file: Home.tsx:47 ~ handleSendForm ~ err:", err);
+    }
+
     // functiuon who save in messages array new messages
-    const messagesCopy = [...messages];
-    messagesCopy.push({ ...message, date: new Date() });
-    sortDate(messagesCopy);
-    setMessages(messagesCopy);
+   
   };
 
   return (
@@ -70,7 +79,7 @@ function DefaultExample() {
           </ListGroup>
         </div>
         <div className="col">
-          <SendMessageForm handleSendForm={handleSendForm} />
+          <SendMessageForm handleSendForm={handleSendForm} prout={test} />
         </div>
         <div className="mt-3">
           <Card className="p-3">

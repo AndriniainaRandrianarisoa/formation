@@ -7,7 +7,6 @@ import Navbar from "./components/Navbar/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { PostDetail } from "./pages/Post/PostDetail";
 import User from "./pages/User/User";
-import Exemple from "./pages/Exemple/exemple";
 import Product from "./pages/Product/Product";
 
 function App() {
