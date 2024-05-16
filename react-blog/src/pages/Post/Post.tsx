@@ -37,20 +37,32 @@ function Post() {
   useEffect(() => {
     const loadAllPosts = async () => {
       const response = await getAllPosts();
-      if (response.status == true) {
-        const first10Items = formatArray(response.datas.data);
-        const postsWithUsers = affectUser(first10Items);
+      setPosts(response.data)
 
-        setPosts(postsWithUsers);
 
-        //setStorePosts(postsWithUsers);
-      } else {
-        console.log("cacaca");
-        // gerer mon affichage de popup erreur 
-      }
+
+
+
+      // if (response.status == true) {
+      //   const first10Items = formatArray(response.datas.data);
+      //   const postsWithUsers = affectUser(first10Items);
+
+      //   setPosts(postsWithUsers);
+
+      //   //setStorePosts(postsWithUsers);
+      // } else {
+      //   console.log("cacaca");
+      //   // gerer mon affichage de popup erreur 
+      // }
     };
     loadAllPosts();
   }, []);
+
+  useEffect(() => {
+   console.log("coucoucou")
+  }, []);
+
+
 
   const affectUser = (data) => {
     const formattedResponse = data.map((el: any) => {
@@ -63,7 +75,12 @@ function Post() {
   };
 
   const handleSendForm = async(post: any) => {
+  console.log("🚀 ~ handleSendForm ~ post:", post)
+
+
+    
     const response = await createNewPost(post)
+
     // post.user = users.datas.find((element) => element.id == post.userId);
     // const postsCopy = [...posts];
     // postsCopy.unshift(post);
@@ -100,18 +117,20 @@ function Post() {
   };
 
   const handleSendUpdateForm = async (newPost) => {
-    const response = await updateOnePost(newPost.id, newPost);
-    if (response?.status == 200) {
-      response.datas.user = users.datas.find((element) => element.id == response.datas.userId);
-      const postsCopy = [...posts];
+    console.log("🚀 ~ handleSendUpdateForm ~ newPost:", newPost)
+    
+    // const response = await updateOnePost(newPost.id, newPost);
+    // if (response?.status == 200) {
+    //   response.datas.user = users.datas.find((element) => element.id == response.datas.userId);
+    //   const postsCopy = [...posts];
 
-      const index = postsCopy.findIndex((el) => el.id == newPost.id);
-      postsCopy.splice(index, 1, response?.datas);
+    //   const index = postsCopy.findIndex((el) => el.id == newPost.id);
+    //   postsCopy.splice(index, 1, response?.datas);
 
 
-      setPosts(postsCopy);
+    //   setPosts(postsCopy);
       
-    } 
+    // } 
   };
 
   return (
@@ -139,7 +158,7 @@ function Post() {
                 <div className="ms-2 me-auto">
                   <div className="fw-bold">{post.title}</div>
                   {post.body}
-                  <div> Editeur : {post.user.name}</div>
+                  {/* <div> Editeur : {post.user.name}</div> */}
                 </div>
 
                 <Link to={`/post/${post.id}`}>

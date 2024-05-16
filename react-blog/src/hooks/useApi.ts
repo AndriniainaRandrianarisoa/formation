@@ -12,11 +12,11 @@ export function useApi() {
   });
 
 
-  // api.interceptors.request.use((config) => {
-  //   // Aller dans le local storage recuperer le token et l'injecter dans la requete
-  //   config.headers["Authorization"] = "Bearer blablablablablaal 4654654654654646546sdfs5";
-  //   return config;
-  // });
+  api.interceptors.request.use((config) => {
+    // Aller dans le local storage recuperer le token et l'injecter dans la requete
+    config.headers["Authorization"] = "Bearer blablablablablaal 4654654654654646546sdfs5";
+    return config;
+  });
 
 
 

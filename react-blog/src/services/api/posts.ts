@@ -1,14 +1,14 @@
 import { useApi } from "../../hooks/useApi.ts";
 
+// eslint-disable-next-line react-hooks/rules-of-hooks
 const api = useApi();
 
 export async function getAllPosts() {
   try {
     const response = await api.get(`posts`);
-    return {
-      datas: response, 
-      status:  true
-    };
+    
+    console.log("🚀 ~ getAllPosts ~ response:", response)
+    return response
   } catch (error) {
     return {
       datas: [],
@@ -16,7 +16,6 @@ export async function getAllPosts() {
       error: error
     };
   }
-  
 }
 
 export async function getOnePostById(id: any) {
@@ -43,9 +42,11 @@ export async function updateOnePost(id: any, body: any) {
 
 
 export async function createNewPost(body: any) {
+  console.log("🚀 ~ createNewPost ~ body:", body)  
   try {
     const response = await api.post(`posts`, body);
    
+    console.log("🚀 ~ createNewPost ~ response:", response)
     return {
       datas: body,
       status: 200

@@ -26,6 +26,7 @@ export default function ContactPage(props: PropContact) {
     function handleChange(evt: any) {
         // let name = evt.target.name;
         // let value = evt.target.value;
+      const test = {name : evt.target.name, value : evt.target.value}
 
         // Destructuring
         const { name, value } = evt.target;

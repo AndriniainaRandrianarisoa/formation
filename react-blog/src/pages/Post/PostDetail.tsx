@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 export const PostDetail = () => {
-  const { id } = useParams();
+  
   const [post, setPost] = useState({});
 
   useEffect(() => {
