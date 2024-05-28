@@ -8,22 +8,28 @@ import { NavBar } from "./components/Navbar/Navbar";
 import NotFoundPage from "./services/utils/NotFoundPage";
 import PrivateRoute from "./services/utils/PrivateRoute";
 import PostDetailPage from "./pages/Post/PostDetailPage";
-
+import { UserCreate } from "./pages/User/UserCreate";
 import "./App.css";
+
 
 function App() {
   return (
     <>
       <NavBar />
+      <div className="p-5">
       <Routes>
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/user" element={<UserList />} />
           <Route path="/user/:id" element={<UserDetail />} />
+          <Route path="/create-user" element={ <UserCreate/>} />
           <Route path="/product" element={<PostDetailPage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+
+      </div>
+     
     </>
   );
 }

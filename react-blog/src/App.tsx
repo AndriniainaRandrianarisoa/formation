@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { PostDetail } from "./pages/Post/PostDetail";
 import User from "./pages/User/User";
 import Product from "./pages/Product/Product";
+import { UserCreate } from '../../template-react-mt/src/pages/User/UserCreate';
 
 function App() {
   return (
@@ -16,12 +17,13 @@ function App() {
       <Navbar />
    
 
-      <div className="p-5">
+      <div className="p-5 ">
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/post" element={<Post />} />
           <Route path="/post/:id" element={<PostDetail />} />
           <Route path="/user" element={ <User/>} />
+          
           <Route path="/product" element={ <Product />}/>
         </Routes>
       </div>

@@ -1,9 +1,15 @@
 import axios, { AxiosInstance } from "axios";
 
 export function useApi() {
+  // recuperer le token 
+  const token = localStorage.getItem('TOKEN')
+
+
+
   const headers = {
     "Content-Type": "application/json",
-    "Access-control-Allow-Origin": "*"
+    "Access-control-Allow-Origin": "*",
+    //"Authorization" : `Bearer ${token}`
   };
 
   const api: AxiosInstance = axios.create({
@@ -11,22 +17,20 @@ export function useApi() {
     headers
   });
 
-
   api.interceptors.request.use((config) => {
-    // Aller dans le local storage recuperer le token et l'injecter dans la requete
-    config.headers["Authorization"] = "Bearer blablablablablaal 4654654654654646546sdfs5";
+
+    // recuper le token dans le local storage 
+    const token = localStorage.getItem('TOKEN')
+    // il faut parse le token
+    config.headers["Authorization"] = `Bearer ${token}`;
     return config;
   });
 
+  // api.interceptors.response.use((config) => {
+  //   // recuper le token dans le local storage 
 
-
-  // // api.interceptors.response.use(
-  // //   // sert generalement a centraliser et gerer les erreurs
-  // //   // exemple parametrage de l'erreur 500 (serveur)
-    
-  // //   // refresh token est gere ici !!!!!
-  // // );
-
+  //   return config;
+  // })
   return api
 }
 
