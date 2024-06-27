@@ -11,6 +11,27 @@
     <h1> <i class="fa fa-cloud"></i> Ma premiere page</h1>
   </header>
   <main>
+    <div>
+      <form action="/ma-page-de-traitement" method="post">
+        <ul>
+          <li>
+            <label for="name">Nom&nbsp;:</label>
+            <input type="text" id="name" name="user_name" />
+          </li>
+          <li>
+            <label for="mail">E-mail&nbsp;:</label>
+            <input type="email" id="mail" name="user_mail" />
+          </li>
+          <li>
+            <label for="msg">Message&nbsp;:</label>
+            <textarea id="msg" name="user_message"></textarea>
+          </li>
+          <li>
+            <button type="submit">Envoyer le message</button>
+          </li>
+        </ul>
+      </form>
+    </div>
     <section>
       <p><b>Ceci est le corps de ma page</b></p>
       <p><a href="#section1">Aller à la section 1</a></p>
@@ -63,40 +84,8 @@
 
 
     <section>
-      <form class="form-example">
-        <div class="form-example">
-          <label for="name">Enter your name: </label>
-          <input type="text" id="name" required maxlength="5">
-        </div>
-        <div class="form-example">
-          <label for="lastname">Enter your lastname: </label>
-          <input type="text" id="lastname" required>
-        </div>
-        <div class="form-example">
-          <label for="tel">Enter your phone: </label>
-          <input type="tel" id="tel" required>
-        </div>
-        <div class="form-example">
-          <label for="adresse">Enter your adresse: </label>
-          <input type="text" id="adresse" required>
-        </div>
-        <div class="form-example">
-          <label for="zip">Enter your zip: </label>
-          <input type="number" id="zip" required>
-        </div>
-
-        <div class="form-example">
-          <label for="email">Enter your email: </label>
-          <input type="email" id="email" required>
-        </div>
-        <div class="form-example">
-          <label for="password">Enter your password: </label>
-          <input type="password" id="password" required>
-        </div>
-        <div class="form-example">
-          <input type="submit" value="Valider!">
-        </div>
-      </form>
+      
+      
     </section>
     <section>
       <table border="1">

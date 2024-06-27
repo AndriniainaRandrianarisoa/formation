@@ -7,6 +7,7 @@ import axios from "axios";
 // DELETE
 
 export async function getTodos() {
+  
     try {
         const { data } = await axios.get('https://jsonplaceholder.typicode.com/todos');
 
@@ -15,6 +16,8 @@ export async function getTodos() {
         console.log(error)
     }
 }
+
+
 
 export async function getTodoById(id:any) {
     try {

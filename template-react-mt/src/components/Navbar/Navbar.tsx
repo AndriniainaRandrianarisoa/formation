@@ -30,6 +30,16 @@ function NavList() {
           Product
         </a>
       </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-medium"
+      >
+        <a href="/signin" className="flex items-center hover:text-blue-500 transition-colors">
+          Se deconnecter
+        </a>
+      </Typography>
       
     </ul>
   );
@@ -54,7 +64,7 @@ export function NavBar() {
       <div className="flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
-          href="#"
+          href="/"
           variant="h6"
           className="mr-4 cursor-pointer py-1.5"
         >
@@ -77,7 +87,7 @@ export function NavBar() {
         </IconButton>
       </div>
       <Collapse open={openNav}>
-        <NavList />b ghnv
+        <NavList />
       </Collapse>
     </Navbar>
   );

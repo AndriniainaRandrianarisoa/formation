@@ -10,6 +10,8 @@ import PrivateRoute from "./services/utils/PrivateRoute";
 import PostDetailPage from "./pages/Post/PostDetailPage";
 import { UserCreate } from "./pages/User/UserCreate";
 import "./App.css";
+import { Footer } from "./components/Footer/Footer";
+import { Signin } from "./pages/Auth/Signin";
 
 
 function App() {
@@ -24,9 +26,12 @@ function App() {
           <Route path="/user/:id" element={<UserDetail />} />
           <Route path="/create-user" element={ <UserCreate/>} />
           <Route path="/product" element={<PostDetailPage />} />
+
+          <Route path="/signin" element={ <Signin/>} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      {/* <Footer /> */}
 
       </div>
      
