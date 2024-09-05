@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { Message } from './services/interfaces/Message'
 import NotFoundPage from './services/utils/NotFoundPage'
 import MessageDetailPage from './pages/Message/MessageDetailPage'
+import TodosPage from './pages/Todo/TodoPage';
 
 function App() {
   
@@ -31,6 +32,8 @@ function App() {
         <Route path="/message" element={ <MessagePage messages={messages}/> } />
 
         <Route path="/message/:idMessage/user/:idUser" element={ <MessageDetailPage/> } />
+
+        <Route path="/todo" element={ <TodosPage /> } />
 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
