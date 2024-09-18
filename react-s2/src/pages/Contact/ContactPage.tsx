@@ -60,20 +60,15 @@ export default function ContactPage(props) {
 
     handleSendForm(newForm)
  
-
   }
 
  
   const handleChange = (evt) => {
-
-    // const test = {
-    //   name:evt.target.name,
-    //   value: evt.target.value
-    // }
-
+    console.log("🚀 ~ handleChange ~ evt:", evt)
+    
     const {name, value} = evt.target
-
-    // setForm({ ...form, [test.name]:test.value });
+    // const name = evt.target.name 
+    // const value = evt.target.value
 
     setForm({ ...form, [name]:value });
   }

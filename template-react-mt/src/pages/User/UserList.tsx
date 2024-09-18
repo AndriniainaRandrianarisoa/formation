@@ -15,7 +15,7 @@ const UserList = () => {
   const [test, setTest] = useState(true);
   const [users, setUsers] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => {template-react-mt/src/pages/Home
     const loadPosts = async () => {
       const response = await getAllUsers();
       console.log("🚀 ~ loadPosts ~ response:", response);

@@ -12,6 +12,7 @@ import { UserCreate } from "./pages/User/UserCreate";
 import "./App.css";
 import { Footer } from "./components/Footer/Footer";
 import { Signin } from "./pages/Auth/Signin";
+import StudentPage from "./pages/Student/StudentPage";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/user/:id" element={<UserDetail />} />
           <Route path="/create-user" element={ <UserCreate/>} />
           <Route path="/product" element={<PostDetailPage />} />
+          <Route path="/student" element={<StudentPage />} />
 
           <Route path="/signin" element={ <Signin/>} />
         </Route>

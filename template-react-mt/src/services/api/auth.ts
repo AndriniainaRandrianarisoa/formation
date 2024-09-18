@@ -21,9 +21,9 @@ export async function signin(body:AuthSignin) {
 
 
 
-export async function refreshToken() {
-  const refreshToken = localStorage.getItem('refreshToken')
-  const headers = { Authorization : "Bearer " + refreshToken }
+export async function refreshToken(refresh) {
+  //const refreshToken = localStorage.getItem('refreshToken')
+  const headers = { Authorization : "Bearer " + refresh }
 
 
   try {

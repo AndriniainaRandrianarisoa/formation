@@ -32,8 +32,8 @@ export function Signin() {
     initialValues: form,
     validationSchema : dataSchema,
     onSubmit:async values => {
-      console.log("🚀 ~ ContactPage ~ values:", values)
       const response = await signin(values)
+      console.log("🚀 ~ Signin ~ response:", response)
       if(response) {
         // set token and refresh token in local storage
         localStorage.setItem("accessToken", response.token)
