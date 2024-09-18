@@ -7,6 +7,7 @@ export default function MessageDetailPage() {
   return (
     <>
       <h1> Message Detail Page</h1>
+      {idMessage}
       <p> Ceci est la page des détails de messages hdfsHSDHDSGHDSHDSHds</p>
     </>
   );

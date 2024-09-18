@@ -65,7 +65,7 @@ export default function ContactPage(props:ContactProps) {
                 <label htmlFor="title">Titre:</label>
 
                 <input className="" type="text" name="title" id="title" onChange={handleChange}   value={values.title}/>
-                <small>{errors.title }</small>
+                {errors.title && <small>{errors.title }</small>}
                 <br />
                 <br />
 

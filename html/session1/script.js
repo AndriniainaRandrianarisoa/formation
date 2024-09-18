@@ -1,3 +1,5 @@
+// coucoucocucoucoucoucoucoco je suis tebé
+
 const friends = [
   "mimi", 
   "dylan", 

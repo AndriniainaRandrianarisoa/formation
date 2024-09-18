@@ -6,7 +6,7 @@ export default function MessagePage(props: any) {
         <>
             <h1> Page des messages </h1>
 
-            {
+            { messages && 
                 messages.map((message: any, index: number) => (
                     <>
                         <div key={index}>
