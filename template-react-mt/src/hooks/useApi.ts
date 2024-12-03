@@ -1,6 +1,8 @@
 import axios, { AxiosInstance } from "axios";
 
 export function useApi() {
+
+  
   const headers = {
     "Content-Type": "application/json",
     "Access-control-Allow-Origin": "*",
@@ -15,10 +17,21 @@ export function useApi() {
     // A chaque requete sortante Aller dans le local storage pour recuperer le token
     const token = localStorage.getItem("accessToken");
     //  et l'injecter dans la requete
-    token ? config.headers["Authorization"] = "Bearer " + token: '';
+    token ? config.headers["Authorization"] = "Bearer " + token : '';
+
     return config;
 
   });
+
+  api.interceptors.response.use((config) => {
+    // traitement erreur 500 
+    // 401
+
+  });
+
+
+
+
   return api
 }
 

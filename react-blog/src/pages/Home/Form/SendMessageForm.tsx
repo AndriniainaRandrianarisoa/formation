@@ -5,8 +5,20 @@ import Card from "react-bootstrap/Card";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 
-export const SendMessageForm = (props) => {
-  const { handleSendForm } = props;
+interface messageInterface {
+  content: string,
+  subject: string
+}
+
+
+interface propsInterfaces  {
+  prout: (message :messageInterface) => void,
+  propsTest: string 
+}
+
+
+export const SendMessageForm = (props:propsInterfaces) => {
+  const { handleSendForm, prout, propsTest } = props;
 
   const [message, setMessage] = useState({
     subject: "",
@@ -15,7 +27,7 @@ export const SendMessageForm = (props) => {
 
   const validationSchema = Yup.object({
      subject : Yup.string().required("Le sujet est obligatoire").min(2,"Minimum 2 caracteres"),
-     content : Yup.string().required().email()
+     content : Yup.string().required()
   })
 
   // const formik = useFormik({
@@ -34,12 +46,13 @@ export const SendMessageForm = (props) => {
     //validationSchema : validationSchema,
     validationSchema,
     onSubmit: (values) => {
-      console.log("🚀 ~ SendMessageForm ~ values:", values);
+      prout(values)
     }
   });
 
   return (
     <div>
+      {propsTest}
       <Card className="p-3">
         <Card.Title>Envoyer un message</Card.Title>
         <Card.Body>

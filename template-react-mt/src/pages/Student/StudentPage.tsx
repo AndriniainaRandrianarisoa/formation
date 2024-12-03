@@ -1,48 +1,24 @@
 import { useEffect, useState } from "react";
-import { createStudent, getAllStudents } from "../../services/api/student";
+import StudentService from "./service";
+import { Student } from "../../services/interfaces/Student";
 
 export default function StudentPage() {
-  
+  const studentService = new StudentService();
+  const [students, setStudents] = useState<Student[]>([]);
 
   useEffect(() => {
-    loadStudent()
+    const response= studentService.loadStudent();
+    setStudents(response);
   }, []);
 
-  const loadStudent = async () => {
-    const response = await getAllStudents()
-  };
-
-  const create = async () => {
-    const params = {
-      "userId": "coucou",
-      "firstName": "string",
-      "lastName": "string",
-      "groupeId": "string",
-      "dateOfBirth": {},
-      "discordWebHook": "string"
-    }
-    const response = createStudent(params)
-  }
-
-
-  const update = async () => {
-    const params = {
-      "userId": "coucou",
-      "firstName": "string",
-      "lastName": "string",
-      "groupeId": "string",
-      "dateOfBirth": {},
-      "discordWebHook": "string"
-    }
-    const id = "23"
-    const response = createStudent(params, id)
-  }
-
-
-    return (
-        <>
-            <h1> Betise </h1>
-         
-        </>
-    )
+  return (
+    <>
+      <h1> Student Liste </h1>
+      {students.map((student, index) => (
+        <div>
+          {student.firstName} {student.lastName} {student.groupe.name}
+        </div>
+      ))}
+    </>
+  );
 }

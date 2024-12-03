@@ -1,8 +1,9 @@
 import { useApi } from "../../hooks/useApi.ts";
 
-
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const api = useApi();
+
+
 
 
 export async function getAllStudents() {
@@ -15,6 +16,9 @@ export async function getAllStudents() {
     };
   }
 }
+
+
+//studentsFaker
 
 
 

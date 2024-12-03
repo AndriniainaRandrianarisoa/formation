@@ -13,21 +13,60 @@ import { fakeMessages } from "./faker";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { createNewMessage } from "../../services/api/messages";
 
+interface messageInterface {
+  content: string,
+  subject: string
+}
+
+
+
+
 function DefaultExample() {
-  const test = "coucoucoucoucoucocuocu";
-  const [messages, setMessages]: any = useState([]);
+  const test : string = "coucoucoucoucoucocuocu";
+
+
+  const [messages, setMessages]: any = useState([{
+    _id: "507f191e810c19729de860ea",
+    subject: "Message 1",
+    content : "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth",
+    date: new Date('2023-06-10')
+  }, 
+  {
+    _id: "507f191e810c19729de860ds",
+    subject: "Message 2",
+    content : "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth",
+    date: new Date('2023-05-13')
+  },
+  {
+    _id: "507f191e810c19729de860e123",
+    subject: "Message 3",
+    content : "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth",
+    date: new Date('2023-02-01')
+  },
+  {
+    _id: "507f191e810c19729de860egj",
+    subject: "Message 4",
+    content : "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth",
+    date: new Date('2023-03-02')
+  },
+  {
+    _id: "507f191e810c19729de860GDS",
+    subject: "Message 5",
+    content : "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth",
+    date: new Date('2023-02-20')
+  }]);
   const KEY = "posts";
   const [posts, setPosts]: any = useLocalStorage(KEY, []);
 
-  useEffect(() => {
-    // function who get list of messages
-    const loadMessages = async () => {
-      const response = fakeMessages.datas;
-      sortDate(response);
-      setMessages(response);
-    };
-    loadMessages();
-  }, []);
+  // useEffect(() => {
+  //   // function who get list of messages
+  //   const loadMessages = async () => {
+  //     const response = fakeMessages.datas;
+  //     sortDate(response);
+  //     setMessages(response);
+  //   };
+  //   loadMessages();
+  // }, []);
 
   useEffect(() => {
     // function who get list of posts in local storage
@@ -40,16 +79,17 @@ function DefaultExample() {
     return messages;
   };
 
-  const handleSendForm = async (message: any) => {
-    try {
-      const response = await createNewMessage(message);
-      const messagesCopy = [...messages];
-      messagesCopy.push({ ...response.datas, date: new Date() });
-      sortDate(messagesCopy);
-      setMessages(messagesCopy);
-    } catch (err) {
-      console.log("🚀 ~ file: Home.tsx:47 ~ handleSendForm ~ err:", err);
-    }
+  const handleSendForm = async (message: messageInterface) => {
+    console.log("🚀 ~ handleSendForm ~ message:", message)
+    // try {
+    //   const response = await createNewMessage(message);
+    //   const messagesCopy = [...messages];
+    //   messagesCopy.push({ ...response.datas, date: new Date() });
+    //   sortDate(messagesCopy);
+    //   setMessages(messagesCopy);
+    // } catch (err) {
+    //   console.log("🚀 ~ file: Home.tsx:47 ~ handleSendForm ~ err:", err);
+    // }
 
     // functiuon who save in messages array new messages
    
@@ -79,7 +119,7 @@ function DefaultExample() {
           </ListGroup>
         </div>
         <div className="col">
-          <SendMessageForm handleSendForm={handleSendForm} prout={test} />
+          <SendMessageForm prout={handleSendForm} propsTest={test}/>
         </div>
         <div className="mt-3">
           <Card className="p-3">
