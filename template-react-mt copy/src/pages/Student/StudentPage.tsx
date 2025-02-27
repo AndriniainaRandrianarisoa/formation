@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
-import { Student } from "../../services/interfaces/Student";
 import { getAllStudents } from "../../services/api/student";
+
+export interface Student {
+  id: string;
+  firstName: string;
+  lastName: string;
+  groupe : {
+    name : string
+  }
+}
+
 
 export default function StudentPage() {
 
   const [students, setStudents] = useState<Student[]>([]);
-
-
-
 
   useEffect(() =>  {
     const loadStudents = async () => {

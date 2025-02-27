@@ -1,16 +1,18 @@
 
+import axios from "axios";
 import { useApi } from "../../hooks/useApi.ts";
+
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const api = useApi();
 
-console.log("🚀 ~ api:", api)
-
 
 
 export async function getAllStudents() {
+  
   try {
-    const {data} = await api.get(`student`);
+    const { data } = await api.get('/student');
+   //const data = faker;
     return data
   } catch (error) {
     return {
@@ -20,10 +22,9 @@ export async function getAllStudents() {
 }
 
 
-
-export async function createStudent(payload) {
+export async function getOneStudentById(id:string) {
   try {
-    const {data} = await api.post(`student`, payload);
+    const { data } = await axios.get(`student/${id}`);
     return data
   } catch (error) {
     return {
@@ -31,4 +32,6 @@ export async function createStudent(payload) {
     };
   }
 }
+
+
 

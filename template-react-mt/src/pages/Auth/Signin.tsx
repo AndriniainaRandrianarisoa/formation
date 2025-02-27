@@ -60,8 +60,6 @@ export function Signin() {
             name="email"
             size="lg"
             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-           
-            onChange={handleChange}
             value={values.email}
           />
           <small>{errors.email}</small>

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    // Version de JavaScript cible
+    "target": "ES2020",
+    
+    // Modules système à utiliser
+    "module": "commonjs",
+    
+    // Niveau de strictitude des vérifications
+    "strict": true,
+    
+    // Génération des sourcemaps pour le debugging
+    "sourceMap": true,
+    
+    // Dossier de sortie des fichiers compilés
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

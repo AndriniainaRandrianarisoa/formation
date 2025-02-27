@@ -1,5 +1,6 @@
 import { useApi } from "../../hooks/useApi.ts";
 import axios from "axios";
+
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const api = useApi();
 
@@ -8,9 +9,10 @@ interface AuthSignin {
   password: string
 }
 
+
 export async function signin(body:AuthSignin) {
   try {
-    const {data} = await api.post(`auth/signin`, body);
+    const {data} = await api.post(`/auth/signin`, body);
     return data 
   } catch (error) {
     return {
