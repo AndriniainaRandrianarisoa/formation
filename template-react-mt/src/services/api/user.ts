@@ -6,11 +6,11 @@ const api = useApi();
 export async function getAllUsers() {
   try {
     const response = await api.get(`users`);
-    return response.data
+    return response.data;
   } catch (error) {
     return {
       datas: [],
-      satus: false, 
+      satus: false,
       error: error
     };
   }
@@ -38,13 +38,12 @@ export async function updateUser(id: any, body: any) {
   }
 }
 
-
 export async function createUser(body: any) {
-  console.log("🚀 ~ createNewPost ~ body:", body)  
+  console.log("🚀 ~ createNewPost ~ body:", body);
   try {
     const response = await api.post(`posts`, body);
-   
-    console.log("🚀 ~ createNewPost ~ response:", response)
+
+    console.log("🚀 ~ createNewPost ~ response:", response);
     return {
       datas: body,
       status: 200

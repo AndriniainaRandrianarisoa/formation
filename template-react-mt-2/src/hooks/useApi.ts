@@ -1,0 +1,28 @@
+import axios, { AxiosInstance } from "axios";
+
+export function useApi() {
+
+  const headers = {
+    "Content-Type": "application/json",
+    "Access-control-Allow-Origin": "*",
+     
+  };
+
+  const api: AxiosInstance = axios.create({
+    baseURL: import.meta.env.VITE_API_LOCAL_URL,
+    headers
+  });
+
+
+  api.interceptors.request.use((config) => {
+   // A chaque requete sortante Aller dans le cache pour recuperer le token
+   const token = localStorage.getItem("access-token");
+   //  et l'injecter dans la requete
+   token ? (config.headers["Authorization"] = "Bearer " + token) : "";
+   return config
+  });
+
+
+
+  return api;
+}
