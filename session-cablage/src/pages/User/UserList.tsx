@@ -5,6 +5,7 @@ import { UserCreateModal } from "./UserCreateModal";
 import TestComponent from "./TestComponent";
 import Table from "../../components/Table/Table";
 import { getUsers } from "../../services/api/user";
+import { userStore } from "../../stores/user";
 
 const UserList = () => {
   const [TABLE_HEAD, setTABLE_HEAD] = useState([
@@ -14,14 +15,15 @@ const UserList = () => {
     "Action"
   ]);
 
+  const user = userStore((state) => state.user);
+
   const [test, setTest] = useState("coucou");
 
   const [modal, setOpen] = useState(false);
 
   const [value, setValue] = useState("bonjour");
 
-  const [table, setTable] = useState([
-  ]);
+  const [table, setTable] = useState([]);
 
   const changeValueModal = () => {
     setOpen(true);
@@ -33,7 +35,7 @@ const UserList = () => {
 
   const receiveFormValues = (values) => {
     setOpen(false);
-    // call api to add new user 
+    // call api to add new user
     //values.date = new Date()
 
     const newItem = [...table, values];
@@ -41,22 +43,18 @@ const UserList = () => {
     setTable(newItem);
   };
 
-
   useEffect(() => {
     const loadUsers = async () => {
       const response = await getUsers();
       console.log("🚀 ~ loadPosts ~ response:", response);
-      
     };
 
     loadUsers();
   }, []);
 
-
-
-
   return (
     <>
+      {user.email}
       <Card className="h-full w-full overflow-scroll">
         <h1>Liste des utilisateurs</h1>
         <button

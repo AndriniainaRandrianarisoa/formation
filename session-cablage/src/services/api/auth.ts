@@ -31,7 +31,7 @@ const api = useApi();
 
 export async function signin(params) {
   try {
-    const { data } = await api.get(`signin`, params);
+    const { data } = await api.post(`auth/signin`, params);
     return data;
   } catch (error) {
     console.log(error);

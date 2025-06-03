@@ -10,6 +10,8 @@ import {
   Typography
 } from "@material-tailwind/react";
 import { signin } from '../../services/api/auth';
+import { userStore } from '../../stores/user';
+
 
 interface AuthSignin {
   email: string,
@@ -23,6 +25,9 @@ export function Signin() {
     password: '',
   });
 
+  //const setUser = userStore((state) => state.setUser);
+  const { setUser  } =  userStore()
+
   const dataSchema = Yup.object({
     email: Yup.string().email().required("Champs obligatoire"),
     password: Yup.string().required("Champs obligatoire")
@@ -32,20 +37,20 @@ export function Signin() {
     initialValues: form,
     validationSchema : dataSchema,
     onSubmit:async values => {
-      console.log("🚀 ~ ContactPage ~ values:", values)
       const response = await signin(values)
       if(response) {
         // set token and refresh token in local storage
         localStorage.setItem("accessToken", response.token)
         localStorage.setItem("refreshToken", response.refresh_token)
-        navigate("/");
+        navigate("/student");
+        setUser({id:response.user.id, email: response.user.email})
       }
     },
-
   });
 
   return (
     <Card color="transparent" shadow={false}>
+      {user.email}
       <Typography variant="h4" color="blue-gray">
         Sign in
       </Typography>

@@ -21,7 +21,7 @@ import {
 
 export default async function Page() {
   await new Promise ((r) => setTimeout(r, 3000))
-  throw new Error("Invalid pathname")
+ // throw new Error("Invalid pathname")
   return (
     <Card className="w-[350px]">
       <CardHeader>
